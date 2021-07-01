@@ -1,0 +1,320 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api de postagem e manipulação de usuários",
+        "descrption": "essa api tem como objetivo a criação de postem ,comentarios e controle de usuarios",
+        "contact": {
+            "email": "bruno.s@bruno.org"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:4001",
+            "description": "API de test"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "summary": "Cadastro de Usuario",
+                "description": "Essa rota será responsável por criar um usuario",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "product": {
+                                    "value": {
+                                        "name": "Jhon doe",
+                                        "email": "jhondoe@jhondoe.com",
+                                        "nickname": "jhondoe",
+                                        "password": "12345678"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Email addres already exist"
+                    },
+                    "402": {
+                        "description": "nickname Exist"
+                    },
+
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Buscar um  Único usuario",
+                "description": "Essa rota será responsável por retornar um  usuario",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+
+                "responses": {
+                    "400": {
+                        "description": "User Not Found"
+                    },
+                    "401": {
+                        "description": "nickname Exist"
+                    },
+
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/avatar": {
+            "put": {
+                "summary": "Atualizar avatar",
+                "description": "Essa rota será responsável por atualizar o avatar do   usuario",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "avatar": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "User Not Found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sessions": {
+            "post": {
+                "summary": "Session do Usuario avatar",
+                "description": "Essa rota será responsável por loga o usuario na aplicação",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "product": {
+                                    "value": {
+                                        "email": "jhondoe@jhondoe.com",
+                                        "password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "User Not Found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile": {
+            "post": {
+                "summary": "Atualizar dados  do Usuario",
+                "description": "Essa rota será responsável por atualizar os dados de um usuario , Somente MANDE OS DADOS QUE QUISER ATUALIZAR",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "product": {
+                                    "value": {
+                                        "name": "jhoon in doe",
+                                        "email": "testeproducao@terra.com",
+                                        "nickname": "jhondoe",
+                                        "password": "123456789",
+                                        "old_password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Email addres already exist"
+                    },
+                    "402": {
+                        "description": "nickname Exist"
+                    },
+
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/password/forgot": {
+            "post": {
+                "summary": "Rota Esqueci minha senha ",
+                "description": "Essa rota será responsável por enviar um email para o usuario para redefinir a senha",
+
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "email": "jhondoe@jhondoe.com"
+                            },
+                            "examples": {
+                                "product": {
+                                    "value": {
+                                        "email": "jhondoe@jhondoe.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Email not found "
+                    },
+
+                    "204": {
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/password/reset": {
+            "post": {
+                "summary": "Rota redefinir a senha do usuario ",
+                "description": "Essa rota será responsável por redefinir a senha do usuario",
+
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "token": "uuid enviado pelo email",
+                                "password": "novo password"
+                            },
+                            "examples": {
+                                "product": {
+                                    "value": {
+                                        "token": "uuid enviado pelo email",
+                                        "password": "novo password"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Email not found "
+                    },
+
+                    "204": {
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "nickname": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
