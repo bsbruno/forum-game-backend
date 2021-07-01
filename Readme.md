@@ -7,8 +7,9 @@
 link do deploy da aplicação
 
 Usuario e senha caso não queira criar um;
-jhondoej@yahoo.com
-qwerty
+user:jhondoej@yahoo.com  
+senha:qwerty
+obs:Caso queira testar o envio de email é só usar esse email a senha é  gXy1^Y6oc1Ew
 ## https://main.d1m7sw77k0x0a2.amplifyapp.com/
 
 
@@ -61,3 +62,7 @@ você ira precisar de:
 ### não salvo senha de usuario em texto aberto 😂
 
 ![img](https://i.imgur.com/Nukouvw.png)
+
+### Envio de email 
+
+![img](https://i.imgur.com/HC6HGdD.png)
