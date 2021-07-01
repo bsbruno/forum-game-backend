@@ -4,7 +4,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "12345",
-    "database": "User",
+    "database": "forum",
     "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
     "cli": {

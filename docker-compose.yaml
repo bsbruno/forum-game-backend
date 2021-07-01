@@ -12,5 +12,6 @@ services:
         restart: always
         environment:
             POSTGRES_PASSWORD: 12345
+            POSTGRES_DB: forum
         ports:
             - 5432:5432
