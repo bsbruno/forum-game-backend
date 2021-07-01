@@ -8,6 +8,11 @@ link do deploy da aplicação
 
 ## https://main.d1m7sw77k0x0a2.amplifyapp.com/
 
+##### Usuario e senha caso não queira criar um;
+
+jhondoej@yahoo.com
+qwerty
+
 obs: Deploy feito 100% usando aws
 
 ### - Tecnologias Usadas
