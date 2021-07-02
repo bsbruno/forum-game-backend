@@ -2,6 +2,8 @@
 
 #### O Lugar em que a mágica acontece
 
+### Link da documentação do swagger http://localhost:4001/api-docs/#/Users
+
 # Caso não queira esse trabalho todo abaixo:
 
 link do deploy da aplicação
